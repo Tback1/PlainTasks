@@ -174,6 +174,10 @@
 					<key>include</key>
 					<string>#critical</string>
 				</dict>
+				<dict>
+					<key>include</key>
+					<string>#important</string>
+				</dict>
 			</array>
 		</dict>
 
@@ -252,7 +256,7 @@
 		<key>tag</key>
 		<dict>
 			<key>match</key>
-			<string>(?&lt;=\s)\@(?!(high|today|critical|low|completed|done)[\s\(])[\w\d\.\(\)\-!? :\+]+[ \t]*</string>
+			<string>(?&lt;=\s)\@(?!(high|today|critical|low|completed|done|important)[\s\(])[\w\d\.\(\)\-!? :\+]+[ \t]*</string>
 			<key>name</key>
 			<string>meta.tag.todo</string>
 		</dict>
@@ -287,6 +291,12 @@
 			<string>(?&lt;=\s)\@critical|✭critical</string>
 			<key>name</key>
 			<string>string.other.tag.todo.critical</string>
+		</dict>
+		<dict>
+			<key>match</key>
+			<string>(?&lt;=\s)\@important|✭important</string>
+			<key>name</key>
+			<string>string.other.tag.todo.important</string>
 		</dict>
 
 	</dict>

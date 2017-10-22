@@ -53,6 +53,7 @@ contexts:
         - include: low
         - include: high
         - include: critical
+        - include: important
     - match: ^＿+$
       scope: meta.punctuation.archive.todo
     - match: '^\s*---.{3,5}---+$'
@@ -86,8 +87,11 @@ contexts:
   low:
     - match: (?<=\s)\@low|✭low
       scope: string.other.tag.todo.low
+  important:
+    - match: (?<=\s)\@important|✭important
+      scope: string.other.tag.todo.important
   tag:
-    - match: '(?<=\s)\@(?!(high|today|critical|low|completed|done)[\s\(])[\w\d\.\(\)\-!? :\+]+[ \t]*'
+    - match: '(?<=\s)\@(?!(high|today|critical|low|completed|done|important)[\s\(])[\w\d\.\(\)\-!? :\+]+[ \t]*'
       scope: meta.tag.todo
   today:
     - match: (?<=\s)\@today|✭ᴛᴏᴅᴀʏ

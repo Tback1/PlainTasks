@@ -8,7 +8,6 @@ import webbrowser
 import itertools
 import threading
 from datetime import datetime, tzinfo, timedelta
-import time
 
 platform = sublime.platform()
 ST3 = int(sublime.version()) >= 3000
@@ -53,10 +52,11 @@ else:
 
 
 def tznow():
-    t = time.time()
-    d = datetime.fromtimestamp(t)
-    u = datetime.utcfromtimestamp(t)
-    return d.replace(tzinfo=timezone(d - u))
+    return datetime.now().replace(
+        tzinfo=timezone(
+            datetime.fromtimestamp(0) - datetime.utcfromtimestamp(0)
+        )
+    )
 
 
 def check_parentheses(date_format, regex_group, is_date=False):
@@ -977,28 +977,33 @@ class PlainTasksAddGutterIconsForTags(sublime_plugin.EventListener):
         view.erase_regions('high')
         view.erase_regions('low')
         view.erase_regions('today')
+        view.erase_regions('important')
         icon_critical = view.settings().get('icon_critical', '')
         icon_high = view.settings().get('icon_high', '')
         icon_low = view.settings().get('icon_low', '')
         icon_today = view.settings().get('icon_today', '')
-        if not any((icon_critical, icon_high, icon_low, icon_today)):
+        icon_important = view.settings().get('icon_important', '')
+        if not any((icon_critical, icon_high, icon_low, icon_today, icon_important)):
             return
 
         critical = 'string.other.tag.todo.critical'
         high = 'string.other.tag.todo.high'
         low = 'string.other.tag.todo.low'
         today = 'string.other.tag.todo.today'
+        important = 'string.other.tag.todo.important'
         r_critical = view.find_by_selector(critical)
         r_high = view.find_by_selector(high)
         r_low = view.find_by_selector(low)
         r_today = view.find_by_selector(today)
+        r_important = view.find_by_selector(important)
 
-        if not any((r_critical, r_high, r_low, r_today)):
+        if not any((r_critical, r_high, r_low, r_today,r_important)):
             return
         view.add_regions('critical', r_critical, critical, icon_critical, sublime.HIDDEN)
         view.add_regions('high', r_high, high, icon_high, sublime.HIDDEN)
         view.add_regions('low', r_low, low, icon_low, sublime.HIDDEN)
         view.add_regions('today', r_today, today, icon_today, sublime.HIDDEN)
+        view.add_regions('important', r_important, important, icon_important, sublime.HIDDEN)
 
     def on_post_save(self, view):
         self.on_activated(view)

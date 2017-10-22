@@ -241,7 +241,7 @@ class PlainTasksToggleHighlightPastDue(PlainTasksEnabled):
         past_due, due_soon, misformatted, phantoms = self.group_due_tags(dates_strings, dates_regions)
 
         scope_past_due = self.view.settings().get('scope_past_due', 'string.other.tag.todo.critical')
-        scope_due_soon = self.view.settings().get('scope_due_soon', 'string.other.tag.todo.high')
+        scope_due_soon = self.view.settings().get('scope_due_soon', 'string.other.tag.todo.high''string.other.tag.todo.important')
         scope_misformatted = self.view.settings().get('scope_misformatted', 'string.other.tag.todo.low')
         icon_past_due = self.view.settings().get('icon_past_due', 'circle')
         icon_due_soon = self.view.settings().get('icon_due_soon', 'dot')

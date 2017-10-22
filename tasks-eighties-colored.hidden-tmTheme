@@ -353,7 +353,7 @@
 				<key>scope</key><string>string.other.tag.todo.today</string>
 				<key>settings</key>
 				<dict>
-					<key>background</key><string>#f2f0ce</string>
+					<key>background</key><string>#00a4ff</string>
 					<key>foreground</key><string>#ffcc66</string>
 					<key>fontStyle</key><string>bold</string>
 				</dict>
@@ -383,7 +383,17 @@
 				<key>scope</key><string>string.other.tag.todo.critical</string>
 				<key>settings</key>
 				<dict>
-					<key>background</key><string>#FF0000</string>
+					<key>background</key><string>#de5448</string>
+					<key>foreground</key><string>#000000</string>
+					<key>fontStyle</key><string>bold</string>
+				</dict>
+			</dict>
+			<dict>
+				<key>name</key><string>important</string>
+				<key>scope</key><string>string.other.tag.todo.important</string>
+				<key>settings</key>
+				<dict>
+					<key>background</key><string>#ffc700</string>
 					<key>foreground</key><string>#000000</string>
 					<key>fontStyle</key><string>bold</string>
 				</dict>

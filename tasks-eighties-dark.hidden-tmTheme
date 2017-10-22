@@ -353,8 +353,8 @@
 				<key>scope</key><string>string.other.tag.todo.today</string>
 				<key>settings</key>
 				<dict>
-					<key>background</key><string>#f2f0ce</string>
-					<key>foreground</key><string>#ffcc66</string>
+					<key>background</key><string>#ffcc66</string>
+					<key>foreground</key><string>#0e181b</string>
 					<key>fontStyle</key><string>bold</string>
 				</dict>
 			</dict>

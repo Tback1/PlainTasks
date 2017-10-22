@@ -51,10 +51,11 @@ default_ccsl = [  # hand-made repr of tasks.hidden-tmTheme
     '.header { font-weight: bold; font-style: normal; color: #bc644a; background-color: rgba(0,0,0,.05); width: 100%; }',
     '.tag { font-weight: bold; font-style: normal; color: #C37763; }',
     '.tag-done, .tag-cancelled { font-style: normal; color:#A49F85; }',
-    '.tag-today, .tag-critical, .tag-high, .tag-low { font-weight: bold; font-style: normal; color: #000000; }',
+    '.tag-today, .tag-critical, .tag-high, .tag-low, .tag-important { font-weight: bold; font-style: normal; color: #000000; }',
     '.tag-today { background: #EADD4E; } .tag-critical{ background: #FF0000; }',
     '.tag-high { background: #FF7F00; }',
     '.tag-low { background: #222222; color: #ffffff; }',
+    '.tag-important { background: #ffc700; color: #ffffff; }',
     '.done, .cancelled { color: #66654F; }',
     '.note { font-style: normal; color: #858266; }'
 ]
@@ -82,6 +83,7 @@ scope_to_tag = {  # key is name of regex group, value is regex expression
     '__tag_critical': r'(?:tag\.todo\.)?critical(?!\.)',
     '__tag_high':     r'(?:tag\.todo\.)?high(?!\.)',
     '__tag_low':      r'(?:tag\.todo\.)?low(?!\.)',
+    '__tag_important':      r'(?:tag\.todo\.)?important(?!\.)',
     # SEPARATORS
     '__sep':         r'separator(?:\.todo(?!\.))?',
     '__sep_archive': r'archive(?:\.todo(?!\.))?'
@@ -203,6 +205,8 @@ class PlainTasksConvertToHtml(PlainTasksBase):
                         pending += '<span class="tag-high">%s</span>' % self.view.substr(s)
                     elif 'tag.todo.low' in sn:
                         pending += '<span class="tag-low">%s</span>' % self.view.substr(s)
+                    elif 'tag.todo.limportant' in sn:
+                        pending += '<span class="tag-important">%s</span>' % self.view.substr(s)
                     elif 'italic' in sn:
                         pending += '<i>%s</i>' % cgi.escape(self.view.substr(s).strip('_*'))
                     elif 'bold' in sn:
